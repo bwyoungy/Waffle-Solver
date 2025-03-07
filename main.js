@@ -19,6 +19,11 @@ function validateGridInput() {
     return true;
 }
 
+// Function to clear grid
+function clearGrid() {
+    document.querySelectorAll('.input-cell').forEach(cell => cell.value = '');
+}
+
 // Algorithm to solve Waffle puzzle
 function solveWaffle() {
     // Validate input and stop function if invalid
