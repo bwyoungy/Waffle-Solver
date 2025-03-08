@@ -1,8 +1,22 @@
-// Iterate over all input cells and allow to input only capital letters
+// Iterate over all input cells
 document.querySelectorAll('.input-cell').forEach(cell => {
+    // Allow to input only capital letters
     cell.addEventListener('input', function() {
         // Replace lowercase letters with uppercase letters and replace anything which isn't a letter with an empty space
         this.value = this.value.toUpperCase().replace(/[^A-Z]/g, '');
+    });
+
+    // Add clickable to change colour based on click on a none-yellow-green cycle
+    cell.addEventListener('click', function() {
+        // If cell is green, change to no background
+        if (this.classList.contains('green')) this.classList.remove('green');
+        // If cell is yellow, change to green
+        else if (this.classList.contains('yellow')) {
+            this.classList.remove('yellow');
+            this.classList.add('green');
+        }
+        // If cell has no background, change to yellow
+        else this.classList.add('yellow');
     });
 });
 

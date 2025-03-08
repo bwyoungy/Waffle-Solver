@@ -4,7 +4,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #fec653;
+    background-color: rgb(255, 0, 128);
 }
 .grid {
     display: grid;
@@ -23,13 +23,21 @@ body {
     align-items: center;
     justify-content: center;
     background-color: white;
+    cursor: pointer;
 }
 .input-cell {
     background-color: #edeff1;
+    text-transform: uppercase;
 }
 .empty-cell {
     background: none;
     border: none;
+}
+.yellow {
+    background-color: #e9ba3a;
+}
+.green {
+    background-color: #6fb05c;
 }
 button {
     margin-top: 20px;
