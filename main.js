@@ -35,7 +35,13 @@ function validateGridInput() {
 
 // Function to clear grid
 function clearGrid() {
-    document.querySelectorAll('.input-cell').forEach(cell => cell.value = '');
+    // Iterate over input cells
+    document.querySelectorAll('.input-cell').forEach(cell => {
+        // Reset the inputted value
+        cell.value = '';
+        // Remove colour class
+        cell.classList.remove("yellow", "green");
+    });
 }
 
 // Algorithm to solve Waffle puzzle
@@ -83,10 +89,10 @@ function upgradeDisplayGrid(gridData) {
         // Update the letter
         cell.value = data.letter;
 
-        // Reset color class
+        // Reset colour class
         cell.classList.remove("yellow", "green");
 
-        // If has color status, add it to class for display
+        // If has colour status, add it to class for display
         if (data.status === "green") cell.classList.add("green");
         else if (data.status === "yellow") cell.classList.add("yellow");
     });
