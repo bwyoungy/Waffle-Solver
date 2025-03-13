@@ -43,3 +43,51 @@ function solveWaffle() {
     // Validate input and stop function if invalid
     if (!validateGridInput()) return;
 }
+
+// Function to save data from UI input to code
+function getGridData() {
+    // Pull cells data from DOM
+    const cells = document.querySelectorAll('.input-cell');
+    
+    // Initialise grid in code
+    let gridData = [];
+
+    // Iterate over cells data
+    cells.forEach((cell, index) => {
+        // Set status based on class
+        let status = "none"; // Default status
+        if (cell.classList.contains("green")) status = "green";
+        else if (cell.classList.contains("yellow")) status = "yellow";
+
+        // Add current cell to grid in code
+        gridData.push({
+            index: index,
+            letter: cell.value,
+            status: status
+        });
+    });
+
+    return gridData;
+}
+
+// Function to update display of grid based on grid in code
+function upgradeDisplayGrid(gridData) {
+    // Get cells from DOM
+    const cells = document.querySelectorAll('.input-cell');
+
+    // Iterate over cells in code grid
+    gridData.forEach((data, index) => {
+        // Get the corresponding HTML cell
+        let cell = cells[index];
+
+        // Update the letter
+        cell.value = data.letter;
+
+        // Reset color class
+        cell.classList.remove("yellow", "green");
+
+        // If has color status, add it to class for display
+        if (data.status === "green") cell.classList.add("green");
+        else if (data.status === "yellow") cell.classList.add("yellow");
+    });
+}
