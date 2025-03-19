@@ -1,3 +1,24 @@
+// Initialise word list
+let wordList = [];
+
+// Load word list into program
+// Word list is taken from the Wordle List Github https://github.com/tabatkins/wordle-list
+async function loadWordList() {
+    try {
+        const response = await fetch("assets/words.json");
+        wordList = await response.json();
+        console.log("Word list loaded:", wordList.length, "words");
+        
+    } catch (err) {
+        console.error("Error loading word list: ", err)
+    }
+}
+
+// Helper function to check if word is valid (exists in word list)
+function isValidWord(word) {
+    return wordList.includes(word.toLowerCase());
+}
+
 // Iterate over all input cells
 document.querySelectorAll('.input-cell').forEach(cell => {
     // Allow to input only capital letters
